@@ -18,10 +18,16 @@ import Colors from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
 import ModalScreen from "../screens/ModalScreen";
 import NotFoundScreen from "../screens/NotFoundScreen";
-import TabOneScreen from "../screens/TabOneScreen";
+// import TabOneScreen from "../screens/TabOneScreen";
 // import TabTwoScreen from "../screens/TabTwoScreen";
+// import TabBarIcon from "../components/TabBarIcon";
+import HomeScreen from "../screens/HomeScreen";
+
+import MessagesScreen from "../screens/MessagesScreen";
+import ProfileScreen from "../screens/ProfileScreen";
+import TopPicksScreen from "../screens/TopPicksScreen";
 import LinksScreen from "../screens/LinksScreen";
-import SettingsScreen from "../screens/SettingsScreen";
+
 import {
   RootStackParamList,
   RootTabParamList,
@@ -81,17 +87,17 @@ function BottomTabNavigator() {
 
   return (
     <BottomTab.Navigator
-      initialRouteName="TabOne"
+      initialRouteName="Home"
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme].tint,
       }}
     >
       <BottomTab.Screen
-        name="TabOne"
-        component={TabOneScreen}
-        options={({ navigation }: RootTabScreenProps<"TabOne">) => ({
-          title: "Tab One",
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+        name="Home"
+        component={HomeScreen}
+        options={({ navigation }: RootTabScreenProps<"Home">) => ({
+          title: "Home",
+          tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
           headerRight: () => (
             <Pressable
               onPress={() => navigation.navigate("Modal")}
@@ -109,14 +115,42 @@ function BottomTabNavigator() {
           ),
         })}
       />
-      {/* <BottomTab.Screen
-        name="TabTwo"
-        component={TabTwoScreen}
+      <BottomTab.Screen
+        name="Find"
+        component={TopPicksScreen}
         options={{
-          title: "Tab Two",
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          title: "Find",
+          tabBarIcon: ({ color }) => <TabBarIcon name="search" color={color} />,
         }}
-      /> */}
+      />
+      <BottomTab.Screen
+        name="Matches"
+        component={TopPicksScreen}
+        options={{
+          title: "Matches",
+          tabBarIcon: ({ color }) => <TabBarIcon name="users" color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="Messaging"
+        component={MessagesScreen}
+        options={{
+          title: "Messaging",
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon name="comment-o" color={color} />
+          ),
+        }}
+      />
+      <BottomTab.Screen
+        name="Profile"
+        component={ProfileScreen}
+        options={{
+          title: "Profile",
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon name="user-circle-o" color={color} />
+          ),
+        }}
+      />
     </BottomTab.Navigator>
   );
 }
