@@ -53,7 +53,7 @@ function HomeScreen({ navigation }) {
           style={{
             position: "relative",
             top: "50%",
-            transform: [{ translateY: 300 }],
+            transform: [{ translateY: 230 }],
 
             alignSelf: "center",
             width: "40%",
